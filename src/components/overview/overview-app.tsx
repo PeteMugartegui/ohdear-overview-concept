@@ -83,7 +83,7 @@ function prefersReducedMotion() {
 
 export function OverviewApp() {
   const [phase, setPhase] = useState<Phase>("complete");
-  const [sample, setSample] = useState(false);
+  const [sample, setSample] = useState(true);
   const [tab, setTab] = useState<"active" | "disabled">("active");
   const [dialog, setDialog] = useState<ActiveDialog>(null);
   const [mobileNav, setMobileNav] = useState(false);
