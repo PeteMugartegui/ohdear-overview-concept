@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #181818;
+  --color-surface: #2b2b2b;
+  --color-raised: #343434;
+  --color-inset: #242424;
+  --color-fg: #e8e8e8;
+  --color-muted: #a8a8a8;
+  --color-faint: #999999;
+  --color-brand: #ff3900;
+  --color-brand-text: #ff3900;
+  --color-on-brand: #ffffff;
+  --color-ok: #00df96;
+  --color-amber: #f0a202;
+  --color-warn: #f5d000;
+  --color-down: #ff0000;
+  --color-down-text: #ff6b63;
+  --color-line: #383838;
+  --color-metric: #4a4a4a;
+  --color-hairline: rgb(255 255 255 / 0.1);
+  --color-banner: #162556;
+  --color-banner-fg: #f4f6fb;
+  --color-overlay: rgb(0 0 0 / 0.66);
+  --color-toolbar: #f4f0e8;
+  --color-toolbar-ink: #1c1916;
+  --color-toolbar-muted: #5e584f;
+  --color-toolbar-chip: #ffffff;
+  --color-toolbar-track: #ddd6cb;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --shadow-pop: 0 8px 24px rgb(0 0 0 / 0.35);
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    background: var(--color-canvas);
+    color: var(--color-fg);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--color-canvas);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.day-missing {
+  background-color: var(--color-raised);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 3px,
+    rgb(255 255 255 / 0.16) 3px,
+    rgb(255 255 255 / 0.16) 4px
+  );
+}
+
+.day-selected {
+  box-shadow: inset 0 0 0 1px var(--color-fg);
+}
+
+.metric-shell {
+  border-radius: 0.75rem;
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.4),
+    0 0 1px rgb(255 255 255 / 0.06);
+}
+
+.chip-neutral {
+  background: rgb(255 255 255 / 0.06);
+  color: var(--color-muted);
+}
+
+.dialog-pop[data-state="open"],
+.dialog-fade[data-state="open"] {
+  animation: fade-in 160ms ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
